@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 });
 
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.url, {
+mongoose.connect(process.env.MONGOLAB_URI || dbConfig.url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
