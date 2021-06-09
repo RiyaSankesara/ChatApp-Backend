@@ -39,6 +39,6 @@ mongoose.connect(dbConfig.url, {
 const auth = require("./routes/authRoute");
 app.use("/api/chatapp", auth);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Listining on port 3000");
 });
