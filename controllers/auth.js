@@ -94,7 +94,7 @@ module.exports = {
         })
       }
       const token = jwt.sign({data: user} , dbConfig.secret,{
-        expiresIn: '1h'
+        expiresIn: '10000'
       });
       res.cookie('auth',token);
       return res.status(httpStatus.OK).json({
