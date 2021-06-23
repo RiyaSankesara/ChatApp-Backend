@@ -78,6 +78,14 @@ app.use("/api/chatapp", auth);
 const posts = require("./routes/postRoute");
 app.use("/api/chatapp", posts);
 
+// For Users
+const users = require("./routes/userRoute");
+app.use("/api/chatapp", users);
+
+// For Friends
+const friends = require("./routes/friendRoute");
+app.use("/api/chatapp", friends);
+
 server.listen(process.env.PORT || 4000, () => {
   console.log("Listining on port 4000");
 });

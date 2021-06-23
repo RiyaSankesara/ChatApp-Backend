@@ -9,15 +9,14 @@ const postSchema = mongoose.Schema({
         {
             userId: {type : mongoose.Schema.Types.ObjectId, ref: 'User'},
             username: {type : String , default: ''},
-            comment: { type: String,default: ''},
+            comment: { type: String, default: ''},
             createdAt: { type: Date,default: Date.now()},
         }
     ],
     totalLikes:{type: Number,default: 0},
     likes:[
         {
-            username:{type: String,default:''},
-            createdAt: { type: Date,default: Date.now()} 
+            username:{type: String,default:''}
         }
     ],
     created: { type: Date,default: Date.now()} 

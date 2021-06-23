@@ -116,18 +116,31 @@ module.exports = {
       });
   },
   async getPostById(req, res) {
-    await Post.findOne({
-      _id: req.params.id,
-    })
-      .populate("user")
-      .populate("comments.userId")
-      .then((data) => {
-        res.status(httpStatus.OK).json({ message: "Post Found" }, data);
+    const postId = req.params.id;
+    try {
+      await Post.findOne({
+        _id: postId,
       })
-      .catch((err) => {
-        res
-          .status(httpStatus.NOT_FOUND) 
-          .json({ message: "Post Not Found" }, data);
-      });
+        .populate('user')
+        .then(data => {
+          if(!data){
+            return res.status(httpStatus.NOT_FOUND).json({
+              message:'Post Not Found'
+            })
+          }
+          else
+          {
+          return res.status(httpStatus.OK).json({ message: "Post Found" , data});
+          }
+        })
+        .catch((err) => {
+          res
+            .status(httpStatus.NOT_FOUND) 
+            .json({ message: "Post Not Found" }, data);
+        });
+      
+    } catch (error) {
+      console.log("Error" + error);
+    }
   }
 };
