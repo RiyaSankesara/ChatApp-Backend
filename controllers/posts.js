@@ -49,9 +49,18 @@ module.exports = {
       const posts = await Post.find({}).populate("user").sort({
         created: -1,
       });
+
+      const top = await Post.find({
+        totalLikes: {
+          $gte : 2
+        }
+      }).populate("user").sort({
+        created: -1,
+      });
+
       return res.status(httpStatus.OK).json({
         message: "All posts",
-        posts,
+        posts, top
       });
     } catch (error) {
       return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
