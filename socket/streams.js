@@ -4,9 +4,9 @@ module.exports = function(io){
 
     io.on('connection', socket => {
     
-        socket.on("refreshPage", message => {
+        socket.on("refresh", message => {
             console.log("Message Received: " + message);
-            io.emit("refresh", { type: "new-message", text: message });
+            io.emit("refreshPage", { type: "new-message", text: message });
           });
         console.log(`Socket ${socket.id} has connected`);
     });
