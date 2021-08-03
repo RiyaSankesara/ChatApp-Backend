@@ -7,3 +7,4 @@
 7. npm install jsonwebtoken
 8. npm install cors
 9. npm install socket.io
+10. npm i lodash
